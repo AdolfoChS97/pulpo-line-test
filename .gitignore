@@ -1,0 +1,52 @@
+api/packages/*/package-lock.json
+
+# dependencies
+node_modules/
+
+# IDE
+api/.idea
+api/.awcache
+api//.vscode
+api/.devcontainer
+api/.classpath
+api/.project
+api/.settings 
+api/*.code-workspace
+
+# Vim
+api/[._]*.s[a-v][a-z]
+api/[._]*.sw[a-p]
+api/[._]s[a-rt-v][a-z]
+api/[._]ss[a-gi-z]
+api/[._]sw[a-p]
+
+# bundle
+api/packages/**/*.d.ts
+api/packages/**/*.js
+
+# misc
+api/.DS_Store
+api/lerna-debug.log
+api/npm-debug.log
+api/yarn-error.log
+api/**/npm-debug.log
+api/packages/**/.npmignore
+api/packages/**/LICENSE
+api/*.tsbuildinfo
+
+# example
+api/quick-start
+api/example_dist
+api/example
+
+# tests
+api/test
+api/benchmarks/memory
+api/coverage
+api/.nyc_output
+api/packages/graphql
+api/benchmarks/memory
+api/build/config\.gypi
+
+api/.npmrc
+api/pnpm-lock.yaml
