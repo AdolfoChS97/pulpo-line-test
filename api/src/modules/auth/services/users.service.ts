@@ -39,7 +39,7 @@ export class UsersService {
       const { email, password } = user;
 
       if ((await this.userNameOrEmailExists(email)) !== null) {
-        throw new BadRequestException('user name or email already exists');
+        throw new BadRequestException('email already exists');
       }
 
       return {
@@ -154,9 +154,9 @@ export class UsersService {
   //       .getOne();
   //   }
 
-  //   findOneByEmail(email: string) {
-  //     return this.usersRepository.findOneBy({ email: email });
-  //   }
+  findOneByEmail(email: string) {
+    return this.usersRepository.findOneBy({ email: email });
+  }
 
   //   async update(id: string, updateUserDto: UpdateUserDto) {
   //     try {
