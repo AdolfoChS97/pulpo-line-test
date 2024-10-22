@@ -6,9 +6,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Session } from './session.entity';
 
 @Entity('users')
 export class User {
@@ -69,4 +72,9 @@ export class User {
   })
   @DeleteDateColumn({ nullable: true, default: null })
   deleted_at: Date;
+
+  //Relations
+  @OneToMany(() => Session, (session) => session.userId)
+  @JoinColumn()
+  sessions: Session[];
 }

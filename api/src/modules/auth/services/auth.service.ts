@@ -46,6 +46,15 @@ export class AuthService {
         expiresIn: this.configService.get('JWT_TIME_EXPI'),
       });
 
+      const sessionCreated = await this.usersService.createSession({
+        userId: user.id,
+        token: token,
+      });
+
+      if (!sessionCreated) {
+        throw new UnauthorizedException('user already logged in');
+      }
+
       return { token };
     } catch (e) {
       throw e;
