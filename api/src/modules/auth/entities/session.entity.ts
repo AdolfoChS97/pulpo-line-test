@@ -1,6 +1,6 @@
 import { User } from './user.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, IsString, IsUUID } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, IsUUID } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('sessions')
@@ -37,6 +37,18 @@ export class Session {
   @IsNotEmpty()
   @Column({ type: 'varchar', length: 255, nullable: false })
   token: string;
+
+
+  @ApiProperty({
+    type: Boolean,
+    example: true,
+    description: 'Session Status',
+    required: true,
+  })
+  @IsNotEmpty()
+  @IsBoolean()
+  @Column({ type: 'boolean', default: true })
+  isActive: boolean;
 
   @ApiProperty({
     type: Date,

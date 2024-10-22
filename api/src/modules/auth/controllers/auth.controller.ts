@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { LoginDto, RegisterDto } from '../dtos/auth.dto';
+import { LoginDto, LogoutDto, RegisterDto } from '../dtos/auth.dto';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -32,5 +32,15 @@ export class AuthController {
     credentials: LoginDto,
   ) {
     return this.authService.login(credentials);
+  }
+
+  @ApiBody({
+    type: LogoutDto,
+    description: 'Logout user',
+    required: true,
+  })
+  @Post('logout')
+  logout(@Body() { userId }: LogoutDto) {
+    return this.authService.logout(userId);
   }
 }

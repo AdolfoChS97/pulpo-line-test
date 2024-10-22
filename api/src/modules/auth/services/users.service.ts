@@ -87,8 +87,20 @@ export class UsersService {
     try {
       return await this.sessionsRepository.findBy({
         userId: userId,
+        isActive: true,
         expiresAt: MoreThan(new Date()),
       });
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async setSessionAsInactive(sessionId: string) {
+    try {
+      return await this.sessionsRepository.update(
+        { id: sessionId },
+        { isActive: false },
+      );
     } catch (e) {
       throw e;
     }

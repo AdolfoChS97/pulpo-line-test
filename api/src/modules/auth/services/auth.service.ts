@@ -60,4 +60,19 @@ export class AuthService {
       throw e;
     }
   }
+
+  async logout(userId: string) {
+    try {
+      const [session] = await this.usersService.getActiveSession(userId);
+
+      if (!session) {
+        throw new UnauthorizedException('user not logged in');
+      }
+
+      await this.usersService.setSessionAsInactive(session.id);
+      return { message: 'user logged out successfully' };
+    } catch (e) {
+      throw e;
+    }
+  }
 }
