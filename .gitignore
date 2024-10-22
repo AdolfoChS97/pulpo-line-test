@@ -1,7 +1,8 @@
 api/packages/*/package-lock.json
+api/*-lock.json
 
 # dependencies
-node_modules/
+api/node_modules/
 
 # IDE
 api/.idea
@@ -23,6 +24,9 @@ api/[._]sw[a-p]
 # bundle
 api/packages/**/*.d.ts
 api/packages/**/*.js
+
+# dist
+api/dist
 
 # misc
 api/.DS_Store
@@ -50,3 +54,6 @@ api/build/config\.gypi
 
 api/.npmrc
 api/pnpm-lock.yaml
+
+#environment files 
+api/.env
