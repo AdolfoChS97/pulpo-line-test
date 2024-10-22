@@ -15,6 +15,12 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
+    .addSecurity('Bearer', {
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+    })
+    .addSecurityRequirements('Bearer')
     .setTitle('Test PulpoLine')
     .setDescription('API for the Test Pulpo Line')
     .setVersion('1.0')
