@@ -47,16 +47,16 @@ export class UsersService {
         throw new BadRequestException('email already exists');
       }
 
-      const user = await this.usersRepository.save({
+      const createdUser = await this.usersRepository.save({
         email: email,
         password: await bcryptjs.hash(password, 10),
       });
 
-      delete user.password;
+      delete createdUser.password;
 
       return {
         message: 'user created successfully',
-        data: user,
+        data: createdUser,
       };
     } catch (e) {
       throw e;
