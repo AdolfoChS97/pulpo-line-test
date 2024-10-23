@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import * as bcryptjs from 'bcryptjs';
 import { MoreThan, Repository } from 'typeorm';
 import { RegisterDto } from '../dtos/auth.dto';
@@ -47,12 +47,16 @@ export class UsersService {
         throw new BadRequestException('email already exists');
       }
 
+      const user = await this.usersRepository.save({
+        email: email,
+        password: await bcryptjs.hash(password, 10),
+      });
+
+      delete user.password;
+
       return {
         message: 'user created successfully',
-        data: await this.usersRepository.save({
-          email: email,
-          password: await bcryptjs.hash(password, 10),
-        }),
+        data: user,
       };
     } catch (e) {
       throw e;

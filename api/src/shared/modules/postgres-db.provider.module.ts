@@ -15,6 +15,11 @@ const configService = new ConfigService();
       database: configService.get('DB_NAME'),
       synchronize: true,
       autoLoadEntities: true,
+      extra: {
+        ssl: {
+          rejectsUnauthorized: false,
+        },
+      },
     }),
   ],
 })
